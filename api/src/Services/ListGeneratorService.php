@@ -18,7 +18,7 @@ class ListGeneratorService
             // $this->productList->productList[] = ["id" => $result["id"], 'productType' => $result['name'], 'url' => "http://localhost/Uebung3/index.php?action=listProductsByTypeId&typeId=" . $result['id']];
 
             // without ID
-            $this->productList->productList[] = ['productType' => $result['name'], 'url' => "http://localhost/Uebung3/index.php?action=listProductsByTypeId&typeId=" . $result['id']];
+            $this->productList->productList[] = ['productType' => $result['name'], 'url' => "http://localhost/Uebung4/api/index.php?action=listProductsByTypeId&typeId=" . $result['id']];
         }
 
         $this->createJsonView($this->productList->productList);
@@ -35,7 +35,7 @@ class ListGeneratorService
             $this->productList->productList[] = ["id" => $result["id"], 'name' => $result['productName'], "price" => $result["productPrice"]];
         }
         $this->outputList[] = ["products" => $this->productList->productList];
-        $this->outputList[] = ['url' => "http://localhost/Uebung3/index.php?action=listTypes"];
+        $this->outputList[] = ['url' => "http://localhost/Uebung4/api/index.php?action=listTypes"];
 
         $this->createJsonView($this->outputList);
     }
