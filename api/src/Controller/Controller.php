@@ -1,15 +1,13 @@
 <?php
 
-// start session
-//session_start();
 class Controller
 {
 
     public function __construct()
     {
         $this->dataBaseQuery = new DBGateway();
-        $this->articleList = new mySession();
-    }
+        $this->cartList = new CartListService();
+            }
 
     // Route depending on User Input
     public function route()
@@ -28,19 +26,20 @@ class Controller
                 break;
 
             case "listProductsByTypeId":
-                $this->dataBaseQuery->dataBaseQueryListProductsByTypeID($productTypeId);
+               $this->dataBaseQuery->dataBaseQueryListProductsByTypeID($productTypeId);
+
                 break;
 
             case "addArticle":
-                $this->articleList->addArticle($articleId);
+                $this->cartList->addProductToCart($articleId, $this->dataBaseQuery->dataBaseQueryallTypesByID());
                 break;
 
             case "removeArticle":
-                $this->articleList->removeArticle($articleId);
+                $this->cartList->removeProductFromCart($articleId);
                 break;
 
             case "listCart":
-                $this->articleList->showArticleList();
+                $this->cartList->generateCartList();
                 break;
 
             default:

@@ -26,7 +26,17 @@ class DBGateway
                             FROM product_types t
                             JOIN products p ON t.id = p.id_product_types
                             WHERE t.id = {$productTypeId};";
-        $this->listGenerator->createProductListByID($this->dataBaseQuery($dbQuery));
+
+       $this->listGenerator->createProductListByID($this->dataBaseQuery($dbQuery));
+    }
+
+    // for Uebung4 - get all products with id, name and price
+    public function dataBaseQueryallTypesByID()
+    {
+        $dbQuery = "SELECT name AS productName, id AS id, price_of_sale AS productPrice
+                            FROM products ORDER BY id";
+
+        return $this->dataBaseQuery($dbQuery);
     }
 
     // DB Connection and return retrieved Data
